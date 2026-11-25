@@ -36,6 +36,6 @@ Block/header height, verification progress, peer counts, blockchain data size, p
 
 `python3 -m unittest discover -s tests -v`
 
-Build tests are not runtime tests. No image publishing is configured. Planned central distribution: [Home Assistant Community Apps](https://github.com/ChristophKomenda/home-assistant-apps), after review and release validation.
+Build tests are not runtime tests. No image publishing is configured. Also available through the experimental [Home Assistant Community Apps](https://github.com/ChristophKomenda/home-assistant-apps) catalog. Live RPC and HAOS runtime validation remain pending.
 
 MIT licensed. Independent community project; not affiliated with Bitcoin Core or Home Assistant.
