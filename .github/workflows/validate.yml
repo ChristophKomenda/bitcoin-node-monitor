@@ -1,0 +1,29 @@
+name: Validate Bitcoin Node Monitor
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - run: python3 -m unittest discover -s tests -v
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            platform: linux/amd64
+          - runner: ubuntu-24.04-arm
+            platform: linux/arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - run: docker build --platform '${{ matrix.platform }}' -t bitcoin-node-monitor:ci bitcoin-node-monitor
+      - run: docker run --rm --entrypoint python3 bitcoin-node-monitor:ci -c 'import paho.mqtt.client as mqtt; assert mqtt.CallbackAPIVersion.VERSION2'
