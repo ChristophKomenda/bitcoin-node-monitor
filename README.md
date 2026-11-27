@@ -1,4 +1,4 @@
-# Bitcoin Node Monitor
+# Bitcoin Node Monitor — Bitcoin Core Monitoring for Home Assistant
 
 **Local-first · Restricted RPC · MQTT discovery**
 
@@ -39,3 +39,17 @@ Block/header height, verification progress, peer counts, blockchain data size, p
 Build tests are not runtime tests. No image publishing is configured. Also available through the experimental [Home Assistant Community Apps](https://github.com/ChristophKomenda/home-assistant-apps) catalog. Live RPC and HAOS runtime validation remain pending.
 
 MIT licensed. Independent community project; not affiliated with Bitcoin Core or Home Assistant.
+
+<!-- github-seo:begin -->
+
+## Frequently asked questions — quick answers
+
+### Can Home Assistant monitor an existing Bitcoin Core node?
+
+This experimental app queries an existing node over restricted RPC and publishes data through MQTT discovery. See the validation status and security requirements before installation.
+
+### Does this app run its own Bitcoin node?
+
+No. It does not bundle Bitcoin Core or a blockchain. Use an existing node and dedicated, restricted RPC credentials; never expose Bitcoin RPC to the public internet.
+
+<!-- github-seo:end -->
